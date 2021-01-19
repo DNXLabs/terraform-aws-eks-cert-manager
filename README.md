@@ -119,28 +119,37 @@ spec:
 | terraform | >= 0.13 |
 | aws | >= 3.13, < 4.0 |
 | helm | >= 1.0, < 1.4.0 |
+| kubectl | 1.9.4 |
 | kubernetes | >= 1.10.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
+| aws | >= 3.13, < 4.0 |
 | helm | >= 1.0, < 1.4.0 |
+| kubectl | 1.9.4 |
 | kubernetes | >= 1.10.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| cluster\_identity\_oidc\_issuer | The OIDC Identity issuer for the cluster. | `string` | n/a | yes |
+| cluster\_identity\_oidc\_issuer\_arn | The OIDC Identity issuer ARN for the cluster that can be used to associate IAM roles with a service account. | `string` | n/a | yes |
+| cluster\_name | The name of the cluster | `string` | n/a | yes |
 | create\_namespace | Whether to create Kubernetes namespace with name defined by `namespace`. | `bool` | `true` | no |
+| dns01 | n/a | <pre>list(object({<br>    name           = string<br>    namespace      = string<br>    kind           = string<br>    dns_zone       = string<br>    region         = string<br>    secret_key_ref = string<br>    acme_server    = string<br>    acme_email     = string<br>  }))</pre> | `[]` | no |
 | enabled | Variable indicating whether deployment is enabled. | `bool` | `true` | no |
 | helm\_chart\_name | Cert Manager Helm chart name to be installed | `string` | `"cert-manager"` | no |
 | helm\_chart\_release\_name | Helm release name | `string` | `"cert-manager"` | no |
 | helm\_chart\_repo | Cert Manager repository name. | `string` | `"https://charts.jetstack.io"` | no |
 | helm\_chart\_version | Cert Manager Helm chart version. | `string` | `"1.1.0"` | no |
+| http01 | n/a | <pre>list(object({<br>    name           = string<br>    kind           = string<br>    ingress_class  = string<br>    secret_key_ref = string<br>    acme_server    = string<br>    acme_email     = string<br>  }))</pre> | `[]` | no |
 | install\_CRDs | To automatically install and manage the CRDs as part of your Helm release. | `bool` | `true` | no |
 | mod\_dependency | Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable. | `any` | `null` | no |
 | namespace | Kubernetes namespace to deploy Cert Manager Helm chart. | `string` | `"cert-manager"` | no |
+| service\_account\_name | External Secrets service account name | `string` | `"cert-manager"` | no |
 | settings | Additional settings which will be passed to the Helm chart values. | `map(any)` | `{}` | no |
 
 ## Outputs
