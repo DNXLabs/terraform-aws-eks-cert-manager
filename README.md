@@ -41,7 +41,7 @@ module "cert_manager" {
     }
   ]
 
-  # In case you want to use HTTP01 challenge method uncomend this section
+  # In case you want to use HTTP01 challenge method uncomment this section
   # and comment dns01 variable
   # http01 = [
   #   {
@@ -59,6 +59,18 @@ module "cert_manager" {
   #     secret_key_ref = "letsencrypt-prod"
   #     acme_server    = "https://acme-v02.api.letsencrypt.org/directory"
   #     acme_email     = "your@email.com"
+  #   }
+  # ]
+
+  # In case you want to create certificates uncomment this block
+  # certificates = [
+  #   {
+  #     name           = "example-com"
+  #     namespace      = "default"
+  #     kind           = "ClusterIssuer"
+  #     secret_name    = "example-com-tls"
+  #     issuer_ref     = "letsencrypt-prod"
+  #     dns_name       = "*.example.com"
   #   }
   # ]
 }
