@@ -106,8 +106,25 @@ spec:
   secretName: example-com-tls
   issuerRef:
     name: letsencrypt-prod
+    kind: ClusterIssuer
   dnsNames:
   - '*.example.com'
+```
+
+#### Decoding the Secret
+You can check for any existing resources with the following command:
+```bash
+kubectl get Issuers,ClusterIssuers,Certificates,CertificateRequests,Orders,Challenges --all-namespaces
+```
+
+To view the contents of the Secret we just created, you can run the following command:
+```bash
+kubectl get secret example-com-tls -o jsonpath='{.data}'
+```
+
+Now you can decode the `tls.key` or `tls.crt` data:
+```bash
+echo 'MWYyZDFlMmU2N2Rm' | base64 -d
 ```
 
 <!--- BEGIN_TF_DOCS --->
