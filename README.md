@@ -164,6 +164,7 @@ echo 'MWYyZDFlMmU2N2Rm' | base64 -d
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| certificates | n/a | <pre>list(object({<br>    name        = string<br>    namespace   = string<br>    secret_name = string<br>    issuer_ref  = string<br>    kind        = string<br>    dns_name    = string<br>  }))</pre> | `[]` | no |
 | cluster\_identity\_oidc\_issuer | The OIDC Identity issuer for the cluster. | `string` | n/a | yes |
 | cluster\_identity\_oidc\_issuer\_arn | The OIDC Identity issuer ARN for the cluster that can be used to associate IAM roles with a service account. | `string` | n/a | yes |
 | cluster\_name | The name of the cluster | `string` | n/a | yes |
