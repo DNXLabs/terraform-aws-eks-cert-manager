@@ -1,5 +1,5 @@
 resource "kubectl_manifest" "http01" {
-  count      = length(var.http01)
+  count      = var.enabled ? length(var.http01) : 0
   yaml_body  = <<YAML
 apiVersion: cert-manager.io/v1
 kind: ${var.http01[count.index].kind}

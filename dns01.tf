@@ -1,5 +1,5 @@
 resource "kubectl_manifest" "dns01" {
-  count      = length(var.dns01)
+  count      = var.enabled ? length(var.dns01) : 0
   yaml_body  = <<YAML
 apiVersion: cert-manager.io/v1
 kind: ${var.dns01[count.index].kind}
@@ -18,7 +18,7 @@ spec:
     solvers:
     - selector:
         dnsZones:
-          - ${var.dns01[count.index].dns_zone}
+          - "${var.dns01[count.index].dns_zone}"
       dns01:
         route53:
           region: ${var.dns01[count.index].region}
