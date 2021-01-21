@@ -5,4 +5,8 @@ resource "kubernetes_namespace" "cert_manager" {
   metadata {
     name = var.namespace
   }
+  
+  lifecycle {
+    ignore_changes        = [tags]
+  }
 }
