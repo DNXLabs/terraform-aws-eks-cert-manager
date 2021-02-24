@@ -147,7 +147,7 @@ echo 'MWYyZDFlMmU2N2Rm' | base64 -d
 |------|---------|
 | terraform | >= 0.13 |
 | aws | >= 3.13, < 4.0 |
-| helm | >= 1.0, < 1.4.0 |
+| helm | >= 1.0, <= 2.0.2 |
 | kubectl | 1.9.4 |
 | kubernetes | >= 1.10.0 |
 
@@ -156,7 +156,7 @@ echo 'MWYyZDFlMmU2N2Rm' | base64 -d
 | Name | Version |
 |------|---------|
 | aws | >= 3.13, < 4.0 |
-| helm | >= 1.0, < 1.4.0 |
+| helm | >= 1.0, <= 2.0.2 |
 | kubectl | 1.9.4 |
 | kubernetes | >= 1.10.0 |
 
