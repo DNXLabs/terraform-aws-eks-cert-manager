@@ -180,7 +180,7 @@ echo 'MWYyZDFlMmU2N2Rm' | base64 -d
 | mod\_dependency | Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable. | `any` | `null` | no |
 | namespace | Kubernetes namespace to deploy Cert Manager Helm chart. | `string` | `"cert-manager"` | no |
 | service\_account\_name | External Secrets service account name | `string` | `"cert-manager"` | no |
-| settings | Additional settings which will be passed to the Helm chart values. | `map(any)` | `{}` | no |
+| settings | Additional settings which will be passed to the Helm chart values. | `map` | `{}` | no |
 
 ## Outputs
 
