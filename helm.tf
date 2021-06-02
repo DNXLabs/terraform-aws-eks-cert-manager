@@ -37,13 +37,8 @@ resource "helm_release" "cert_manager" {
     value = 1001
   }
 
-  dynamic "set" {
-    for_each = var.settings
-
-    content {
-      name  = set.key
-      value = set.value
-    }
-  }
+  values = [
+    yamlencode(var.settings)
+  ]
 
 }
